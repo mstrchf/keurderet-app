@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import { Octicons, Fontisto, MaterialCommunityIcons } from '@expo/vector-icons';
+import {StatusBar} from 'expo-status-bar';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
+import BottomSheet from "@gorhom/bottom-sheet";
+import {PickerIOS} from "@react-native-picker/picker";
 
 
 // component imports
-import Header from "../components/Header";
-import BottonNav from "../components/BottonNav";
+import BottomNav from '../components/BottomNav'
+import {useRef, useState} from "react";
+import {Picker} from "@react-native-picker/picker";
 
-
-export default function Home() {
+export default function Home({navigation}) {
+    const [selectedLanguage, setSelectedLanguage] = useState();
+    const bottomSheetRef = useRef()
     return (
         <View style={styles.container}>
-            <Header title='Keur Deret'/>
+            {/* <Header title='Keur Deret'/> */}
             <View style={styles.main}>
+
                 <View style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 22}}>
-                    <Text style={{fontSize: 34, fontWeight: 'bold', textAlign: 'center', marginBottom: 20, color: '#242424dd'}}>
+                    <Text style={{
+                        fontSize: 34,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        marginBottom: 20,
+                        color: '#242424dd'
+                    }}>
                         Emergencny Help Needed?
                     </Text>
                     <Text style={{fontSize: 20, textAlign: 'center', color: '#24242455'}}>
@@ -23,13 +34,42 @@ export default function Home() {
                 </View>
 
 
-                <View style={styles.requestBtnContainer}>
+                <TouchableOpacity activeOpacity={0.5} style={styles.requestBtnContainer} onLongPress={() => {
+                    bottomSheetRef.current.snapToIndex(1)
+                }}>
                     <View style={styles.requestBtn}>
-                        <MaterialCommunityIcons name="blood-bag" size={80} color="white" />
+                        <MaterialCommunityIcons name="blood-bag" size={80} color="white"/>
                     </View>
-                </View>
+                </TouchableOpacity>
+
             </View>
-            <BottonNav/>
+            <BottomNav navigation={navigation}/>
+            <BottomSheet index={-1} ref={bottomSheetRef} snapPoints={['25%', '50%', '75%']} enablePanDownToClose={true}>
+                <View style={{
+                    flex: 1,
+                    alignItems: 'center',
+                    backgroundColor: '#24242433',
+                    borderRadius: 15,
+                    marginHorizontal: 5,
+                    padding: 10
+                }}>
+                    <Text>Select Blood Type:</Text>
+                    <TouchableOpacity
+                        onPress={() => {
+                            bottomSheetRef.current.close()
+                        }}
+                        activeOpacity={0.5}
+                        style={
+                            {
+                                padding: 10,
+                                fontSize: 24,
+                                backgroundColor: '#69995D',
+                                borderRadius: 5,
+                                marginVertical: 10
+                            }}><Text>Send Request</Text></TouchableOpacity>
+
+                </View>
+            </BottomSheet>
             <StatusBar style="auto"/>
         </View>
     )
@@ -38,13 +78,13 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#99999922',
+        backgroundColor: '#fff',
     },
 
     main: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
     },
 
     requestBtn: {
@@ -74,7 +114,7 @@ const styles = StyleSheet.create({
         borderRadius: 110,
 
         borderWidth: 2,
-        borderColor: '#e4e3e3',
+        borderColor: '#eee',
 
         shadowColor: "#000",
         shadowOffset: {

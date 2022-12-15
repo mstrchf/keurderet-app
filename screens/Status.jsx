@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet, Text, View, SafeAreaView, SectionList, StatusBar} from "react-native";
 
 import Header from "../components/Header";
-import {DATA} from "../lib/dummy-data";
+import {DATA} from "../lib/data";
 
 const Item = ({location, blood, hospital}) => (
     <View style={styles.item}>
@@ -22,7 +22,6 @@ const Item = ({location, blood, hospital}) => (
 const Status = () => (
 
     <SafeAreaView style={styles.container}>
-        <Header title='Notifications'/>
         <SectionList
             sections={DATA}
             keyExtractor={(item, index) => item + index}
@@ -39,6 +38,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 10,
+        backgroundColor: 'white'
     },
 
     item: {
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
         fontSize: 22,
         paddingVertical: 5,
         paddingHorizontal: 5,
-        backgroundColor: 'white',
-        color: '#242424'
+        color: '#242424',
+        backgroundColor: 'white'
 
     },
     blood: {
