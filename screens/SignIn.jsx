@@ -1,5 +1,5 @@
 import { View , Text} from "react-native";
-import LangPicker from "./components/Picker";
+import LangPicker from '../components/Picker';
 
 
 
