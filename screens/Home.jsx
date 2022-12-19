@@ -16,42 +16,40 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       {/* <Header title='Keur Deret'/> */}
       <View style={styles.main}>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginHorizontal: 22,
-          }}
-        >
+        <View>
           <Text
             style={{
-              fontSize: 34,
+              fontSize: 24,
               fontWeight: "bold",
-              textAlign: "center",
-              marginBottom: 20,
               color: "#242424dd",
             }}
           >
-            Emergencny Help Needed?
+            Welcome back, User
           </Text>
-          <Text
-            style={{ fontSize: 20, textAlign: "center", color: "#24242455" }}
-          >
-            Hold down button to request
+          <Text style={{ fontSize: 16, color: "#24242455" }}>
+            Another day to save a life with the most minimum effort
           </Text>
         </View>
 
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={styles.requestBtnContainer}
-          onLongPress={() => {
-            bottomSheetRef.current.snapToIndex(1);
-          }}
-        >
-          <View style={styles.requestBtn}>
-            <MaterialCommunityIcons name="blood-bag" size={80} color="white" />
-          </View>
-        </TouchableOpacity>
+        <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            style={styles.requestBtnContainer}
+            onLongPress={() => {
+              bottomSheetRef.current.snapToIndex(1);
+            }}
+          >
+            <View style={styles.requestBtn}>
+              <MaterialCommunityIcons
+                name="blood-bag"
+                size={80}
+                color="white"
+              />
+            </View>
+          </TouchableOpacity>
+
+          <Text>Long press this button to request for blood donation</Text>
+        </View>
       </View>
       <BottomNav navigation={navigation} />
       <BottomSheet
@@ -59,15 +57,16 @@ export default function Home({ navigation }) {
         ref={bottomSheetRef}
         snapPoints={["25%", "50%", "75%"]}
         enablePanDownToClose={true}
+        backgroundStyle={{ backgroundColor: "#242424" }}
+        handleIndicatorStyle={{ backgroundColor: "white" }}
       >
         <View
           style={{
             flex: 1,
             alignItems: "center",
-            backgroundColor: "#24242433",
+            color: "white",
+            backgroundColor: "white",
             borderRadius: 15,
-            marginHorizontal: 5,
-            padding: 10,
           }}
         >
           <Text>Select Blood Type:</Text>
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "space-evenly",
+    marginTop: 20
   },
 
   requestBtn: {
@@ -143,5 +142,6 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
 
     elevation: 8,
+    marginBottom: 15
   },
 });
