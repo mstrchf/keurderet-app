@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import BottomSheet from "@gorhom/bottom-sheet";
+import BottomSheet, {BottonSheetView} from "@gorhom/bottom-sheet";
 import { PickerIOS } from "@react-native-picker/picker";
 
 // component imports
@@ -60,7 +60,7 @@ export default function Home({ navigation }) {
         backgroundStyle={{ backgroundColor: "#242424" }}
         handleIndicatorStyle={{ backgroundColor: "white" }}
       >
-        <View
+        <BottomSheetView
           style={{
             flex: 1,
             alignItems: "center",
@@ -85,7 +85,7 @@ export default function Home({ navigation }) {
           >
             <Text>Send Request</Text>
           </TouchableOpacity>
-        </View>
+        </BottomSheetView>
       </BottomSheet>
       <StatusBar style="auto" />
     </View>
