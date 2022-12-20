@@ -153,7 +153,8 @@ export default function Home({ navigation }) {
               backgroundColor: "#242424",
               borderRadius: 25,
               alignItems: "center",
-            }}>
+            }}
+            onPress={()=> {bottomSheetRef.current.close()}}>
             <Text style={{ fontSize: 20, color: "white" }}>Close</Text>
           </TouchableOpacity>
           </View>
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
   },
 
   requestBtn: {
-    backgroundColor: "#d30303",
+    backgroundColor: "#c81d25",
     width: 170,
     height: 170,
     justifyContent: "center",

@@ -13,24 +13,32 @@ export default function BottonNav({ navigation }) {
           setIsSelected("home");
         }}
       >
-        <Ionicons name="ios-home-outline" size={24} color="#d30303" />
+        <Ionicons
+          name="home-outline"
+          size={24}
+          color={isSelected === "home" ? "#d30303aa" : "#242424"}
+        />
         {isSelected === "home" ? (
-          <Text style={{ fontSize: 18, color: "#242424" }}>Home</Text>
+          <Text style={{ fontSize: 18, color: "white" }}>Home</Text>
         ) : (
           ""
         )}
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={isSelected === "status" ? styles.selected : styles.notSelected}
+        style={[isSelected === "status" ? styles.selected : styles.notSelected]}
         onPress={() => {
           navigation.navigate("Status");
           setIsSelected("status");
         }}
       >
-        <Ionicons name="list-sharp" size={28} color="#d30303" />
+        <Ionicons
+          name="list-sharp"
+          size={26}
+          color={isSelected === "status" ? "#d30303aa" : "#242424"}
+        />
         {isSelected === "status" ? (
-          <Text style={{ color: "#242424", fontSize: 18 }}>Status</Text>
+          <Text style={{ color: "white", fontSize: 18 }}>Status</Text>
         ) : (
           ""
         )}
@@ -40,12 +48,16 @@ export default function BottonNav({ navigation }) {
         style={isSelected === "settings" ? styles.selected : styles.notSelected}
         onPress={() => {
           navigation.navigate("Settings");
-          setIsSelected('settings')
+          setIsSelected("settings");
         }}
       >
-        <Ionicons name="ios-settings-outline" size={24} color="#d30303" />
+        <Ionicons
+          name="settings-outline"
+          size={24}
+          color={isSelected === "settings" ? "#d30303aa" : "#242424"}
+        />
         {isSelected === "settings" ? (
-          <Text style={{ color: "#242424", fontSize: 18 }}>Settings</Text>
+          <Text style={{ color: "white", fontSize: 18 }}>Settings</Text>
         ) : (
           ""
         )}
@@ -59,20 +71,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    // paddingVertical: 5,
-    // paddingHorizontal: 7,
-    //        borderTopLeftRadius: 20,
-    //        borderTopRightRadius: 20,
+    backgroundColor: "#c81d25",
   },
 
   selected: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
-    padding: 10,
+    padding: 12,
     flex: 2,
-    borderTopWidth: 3,
-    borderColor: '#242424'
+    backgroundColor: "#242424",
   },
 
   notSelected: {
