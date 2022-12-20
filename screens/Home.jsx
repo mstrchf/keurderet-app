@@ -140,7 +140,7 @@ export default function Home({ navigation }) {
             activeOpacity={0.5}
             style={{
               padding: 15,
-              backgroundColor: "#d30303aa",
+              backgroundColor: "#c81d25",
               borderRadius: 25,
               alignItems: "center",
             }}
