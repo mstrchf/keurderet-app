@@ -1,14 +1,21 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  ScrollView,
+  Platform,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import { PickerIOS } from "@react-native-picker/picker";
+import { useRef, useState } from "react";
+import { Picker } from "@react-native-picker/picker";
+import { BlurView } from "expo-blur";
 
 // component imports
 import BottomNav from "../components/BottomNav";
-import { useRef, useState } from "react";
-import { Picker } from "@react-native-picker/picker";
-
 export default function Home({ navigation }) {
   const [selectedLanguage, setSelectedLanguage] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -39,13 +46,24 @@ export default function Home({ navigation }) {
 
         <View
           opacity={isOpen ? 0.3 : 1}
-          style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            flex: 1,
+            marginHorizontal: 25,
+            marginBottom: 20,
+          }}
         >
           <TouchableOpacity
             activeOpacity={0.5}
             style={styles.requestBtnContainer}
             onLongPress={() => {
-              bottomSheetRef.current.snapToIndex(1);
+              if (Platform.OS === "ios") {
+                bottomSheetRef.current.snapToIndex(2);
+              } else {
+                bottomSheetRef.current.snapToIndex(0);
+              }
+
               setIsOpen(true);
             }}
           >
@@ -58,17 +76,20 @@ export default function Home({ navigation }) {
             </View>
           </TouchableOpacity>
 
-          <Text>Long press this button to request for blood donation</Text>
+          <Text
+            style={{ color: "#24242499", fontSize: 16, textAlign: "center" }}
+          >
+            Long press this button to request for blood donation
+          </Text>
         </View>
       </View>
+
       <BottomNav navigation={navigation} />
       <BottomSheet
         index={-1}
         ref={bottomSheetRef}
-        snapPoints={["25%", "50%", "75%"]}
+        snapPoints={["30%", "50%", "70%"]}
         enablePanDownToClose={true}
-        handleIndicatorStyle={{ backgroundColor: "#242424ee" }}
-        backgroundStyle={{ backgroundColor: "#fff" }}
         onClose={() => {
           setIsOpen(false);
         }}
@@ -77,27 +98,65 @@ export default function Home({ navigation }) {
           style={{
             flex: 1,
             alignItems: "center",
+            justifyContent:
+              Platform.OS === "ios" ? "space-between" : "flex-start",
+            marginBottom: 10,
           }}
         >
-          <Text>Select Blood Type:</Text>
+          <Text style={{ fontSize: 20 }}>Select Blood Type:</Text>
+          <Picker
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedLanguage(itemValue)
+            }
+            style={{
+              width: 300,
+              marginVertical: 5,
+              borderBottomWidth: 1,
+              borderTopWidth: 1,
+              borderTopColor: "#24242411",
+              borderBottomColor: "#24242411",
+            }}
+            itemStyle={{ fontSize: 18 }}
+          >
+            <Picker.Item label="Python" value="python" />
+            <Picker.Item label="Java" value="java" />
+            <Picker.Item label="JavaScript" value="jscript" />
+            <Picker.Item label="Rust" value="rust" />
+            <Picker.Item label="Golang" value="golang" />
+            <Picker.Item label="Kotlin" value="kotlin" />
+          </Picker>
 
-          
+          <View style={{flexDirection: 'row', justifyContent: 'space-between', width: 300}}>
           <TouchableOpacity
             onPress={() => {
               bottomSheetRef.current.close();
               setIsOpen(false);
+              Alert.alert(
+                "Request",
+                `Request for blood group ${selectedLanguage} sent successfully `
+              );
             }}
             activeOpacity={0.5}
             style={{
-              padding: 10,
-              fontSize: 24,
-              backgroundColor: "#69995D",
-              borderRadius: 5,
-              marginVertical: 10,
+              padding: 15,
+              backgroundColor: "#d30303aa",
+              borderRadius: 25,
+              alignItems: "center",
             }}
           >
-            <Text>Send Request</Text>
+            <Text style={{ fontSize: 20, color: "white" }}>Send Request</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity style={{
+              padding: 15,
+              backgroundColor: "#242424",
+              borderRadius: 25,
+              alignItems: "center",
+            }}>
+            <Text style={{ fontSize: 20, color: "white" }}>Close</Text>
+          </TouchableOpacity>
+          </View>
         </BottomSheetView>
       </BottomSheet>
       <StatusBar style="auto" />

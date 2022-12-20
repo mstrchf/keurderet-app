@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 2,
     borderTopWidth: 3,
+    borderColor: '#242424'
   },
 
   notSelected: {
