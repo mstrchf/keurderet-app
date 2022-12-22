@@ -74,15 +74,10 @@ export default function Home({ navigation }) {
           <TouchableOpacity
             onPress={() => {
               bottomSheetRef.current.close();
+              navigation.navigate('SignIn');
             }}
             activeOpacity={0.5}
-            style={{
-              padding: 10,
-              fontSize: 24,
-              backgroundColor: "#69995D",
-              borderRadius: 5,
-              marginVertical: 10,
-            }}
+            style={styles.sendRequest}
           >
             <Text>Send Request</Text>
           </TouchableOpacity>
@@ -144,4 +139,12 @@ const styles = StyleSheet.create({
 
     elevation: 8,
   },
+  sendRequest:{
+    padding: 10,
+    fontSize: 24,
+    backgroundColor: "red",
+    borderRadius: 5,
+    marginVertical: 10,
+
+  }
 });
