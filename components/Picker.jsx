@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Picker } from '@react-native-picker/picker';
-import { TextInput, View } from "react-native";
+import { TextInput, View , TouchableOpacity, Text} from "react-native";
 
 export default function LangPicker() {
 
@@ -37,6 +37,13 @@ export default function LangPicker() {
         <TextInput placeholder="+220" style={{borderBottomWidth: 1, padding: 5}}/>
         <TextInput placeholder="Phone number" style={{borderBottomWidth: 1, padding: 5}}/>
     </View>
+
+
+    {/*  */}
+    <TouchableOpacity>
+        <Text style={{alignSelf:'center', backgroundColor:"red",marginTop:90, fontSize:25}}>Next</Text>
+    </TouchableOpacity>
+
     </>
 
     )
