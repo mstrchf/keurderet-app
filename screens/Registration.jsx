@@ -1,7 +1,9 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView , Switch} from "react-native";
+import { useNavigation } from '@react-navigation/native'
 import { useState } from "react";
 
 const Registration = () => {
+    const navigation = useNavigation();
     const [enable , setEnable] = useState(true);
     const [text, setText] = useState()
 
@@ -55,7 +57,7 @@ const Registration = () => {
             </View>
 
             {/* button */}
-            <TouchableOpacity style={style.button}>
+            <TouchableOpacity style={style.button} onPress={() => navigation.navigate('Home')}>
                 <Text style={{color: 'white', fontWeight: 'bold', paddingLeft: 7}}>Complete</Text>
             </TouchableOpacity>
         </ScrollView>
