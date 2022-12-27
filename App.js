@@ -22,7 +22,6 @@ export default function App() {
                 <Stack.Screen name='Settings' component={Settings}/>
                 <Stack.Screen name='Registration' component={Registration}/>
                 <Stack.Screen name='SignIn' component={SignIn}/>
-
             </Stack.Navigator>
 
             <StatusBar style="auto"/>
