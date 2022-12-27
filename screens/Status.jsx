@@ -1,7 +1,6 @@
 import React from "react";
-import {StyleSheet, Text, View, SafeAreaView, SectionList, StatusBar} from "react-native";
+import {StyleSheet, Text, View, SafeAreaView, SectionList} from "react-native";
 
-import Header from "../components/Header";
 import {DATA} from "../lib/data";
 
 const Item = ({location, blood, hospital}) => (
