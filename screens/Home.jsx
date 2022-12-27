@@ -217,4 +217,12 @@ const styles = StyleSheet.create({
     elevation: 8,
     marginBottom: 15,
   },
+  sendRequest:{
+    padding: 10,
+    fontSize: 24,
+    backgroundColor: "red",
+    borderRadius: 5,
+    marginVertical: 10,
+
+  }
 });

@@ -13,46 +13,53 @@ const Registration = () => {
         }
         // setEnable(previouseState => !previouseState)
     }
+
+    //
+    const HangleInput = (text) =>{
+        console.log(text)
+
+    }
     return(
         <ScrollView>
             <View style={style.header}>
                 <Text style={style.moreInfo}>More Informations</Text>
                 <Text style={{marginBottom: 20}}>Enter the code sent to the phone number you provided.</Text>
             </View>
-            {/* inputs */}
+            {/* Name */}
             <View style={{marginLeft: 20,}}>
             <View>
                 <Text style={{marginBottom: 5}}>Full Name</Text>
                 <TextInput placeholder="Enter first and Last Name" style={style.input}/>
             </View>
-            {/*  */}
+            {/*BloodGroup  */}
             <View>
                 <Text style={{marginBottom: 5}}>Blood Group</Text>
-                <TextInput placeholder="Enter first and Last Name" style={style.input}/>
+                <TextInput placeholder="Enter Blood Type" style={style.input}/>
             </View>
-            {/*  */}
+            {/* Address */}
             <View>
                 <Text style={{marginBottom: 5}}>Address</Text>
-                <TextInput placeholder="Enter first and Last Name" style={style.input}/>
+                <TextInput placeholder="Enter Address" style={style.input}/>
             </View>
-            {/*  */}
+            {/* DOB */}
             <View>
                 <Text style={{marginBottom: 5}}>Birth Year</Text>
-                <TextInput placeholder="Enter first and Last Name" style={style.input}/>
+                <TextInput placeholder="Enter your birth year" style={style.input} onChangeText={HangleInput}/>
             </View>
 
-            {/* available to donate */}
+            {/* available to donate switch */}
             <View>
-                <Text>Available to Donate</Text>
+                <Text style={{fontWeight: '600'}}>Available to Donate</Text>
                 <Switch onValueChange={Toggle} value={enable} trackColor={{ false: 'grey', true: 'red'}} style={{alignSelf: 'flex-start'}}/>
             </View>
             </View>
 
             {/* button */}
             <TouchableOpacity style={style.button}>
-                <Text style={{color: 'white', fontWeight: 'bold', paddingLeft: 15}}>Complete</Text>
+                <Text style={{color: 'white', fontWeight: 'bold', paddingLeft: 7}}>Complete</Text>
             </TouchableOpacity>
         </ScrollView>
+        
     )
 }
 
@@ -71,11 +78,11 @@ const style = StyleSheet.create({
     }, 
     button:{
         backgroundColor: '#F63634',
-        padding: 20,
-        width: '40%',
+        padding: 17,
         alignSelf: 'center',
-        borderRadius: 10,
-        marginTop: 40
+        borderRadius: 7,
+        marginTop: 40,
+        marginBottom: 20
     },
     moreInfo:{
         fontWeight: 'bold', 
