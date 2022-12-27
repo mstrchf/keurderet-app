@@ -18,7 +18,6 @@ export default function App() {
                 <Stack.Screen name='Home' component={Home}/>
                 <Stack.Screen name='Status' component={Status}/>
                 <Stack.Screen name='Settings' component={Settings}/>
-
             </Stack.Navigator>
 
             <StatusBar style="auto"/>
